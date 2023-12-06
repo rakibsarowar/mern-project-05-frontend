@@ -3,16 +3,16 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 
 const PopularMenu = () => {
-    const [menu, setMenu] = useState ([]);
-    useEffect ( () => {
-        fetch ('../../../../public/Manu.json')
-        .then(res => res.json())
-        .then (data => {
-            const popularItems = data.filter(item => item.category === 'popular');
+    const [menu, setMenu] = useState([]);
+    useEffect(() => {
+        fetch('../../../../public/Manu.json')
+            .then(res => res.json())
+            .then(data => {
+                const popularItems = data.filter(item => item.category === 'popular');
 
-            setMenu(popularItems)
-        })
-    } ,[])
+                setMenu(popularItems)
+            })
+    }, [])
 
     return (
         <section className="mb-12 container mx-auto">
@@ -28,7 +28,9 @@ const PopularMenu = () => {
                     ></MenuItem>)
                 }
             </div>
-            <button className="btn btn-outline border-0 border-b-4 mt-4">View Full Menu</button>
+            <div className="text-center mt-8">
+                <button className="btn btn-outline border-0 border-b-4 mt-4">View Full Menu</button>
+            </div>
         </section>
     );
 };
