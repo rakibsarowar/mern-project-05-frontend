@@ -19,7 +19,9 @@ const Menu = () => {
             <Helmet>
                 <title>Menu</title>
             </Helmet>
+            
             <Cover img={menuImage} title={'our menu'}></Cover>
+
             {/* main cover  */}
             <SectionTitle subHeading="Dont miss" heading="Todays Offer"></SectionTitle>
             {/* offered menu items */}
