@@ -2,15 +2,26 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 
 const AllUsers = () => {
-    const { data: users = [] } = useQuery({
-        queryKey: ['users'], // Pass an object with a queryKey property
+    // const { data: users = [] } = useQuery({
+    //     queryKey: ['users'], // Pass an object with a queryKey property
+    //     queryFn: async () => {
+    //         const res = await fetch('http://localhost:5000/users');
+    //         return res.json();
+    //     }
+    // });
+
+    // 78.11 ---4.50 ---------------------------
+    const axiosSecure = useAxiosSecure();
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
-            return res.json();
+            const res = await axiosSecure.get('/users');
+            return res.data;
         }
-    });
+    })
 
     const handleMakeAdmin = user =>{
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
