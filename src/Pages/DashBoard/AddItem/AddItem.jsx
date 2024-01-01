@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 import useAxiosPublic from "../../../hooks/useAxiosPublic/useAxiosSecure";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_key = import.meta.env.VITE_Image_Hosting_Key;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItem = () => {
@@ -16,6 +16,7 @@ const AddItem = () => {
 
     const onSubmit = async (data) => {
         console.log(data)
+
         // image upload to imgbb and then get an url
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -48,7 +49,9 @@ const AddItem = () => {
             }
         }
         console.log('with image url', res.data);
+
     };
+    
     return (
         <div>
 
